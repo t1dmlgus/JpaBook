@@ -1,10 +1,10 @@
 package com.s1dmlgus.JpaBook.domain.book;
 
+
 import com.s1dmlgus.JpaBook.domain.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;
-
 
 @Builder
 @ToString
@@ -12,22 +12,19 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Entity
-public class Book extends BaseTimeEntity {
-
+public class BookReviewInfo extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    private float averageReviewScore;
 
-    private Long authorId;
+    private int reviewCount;
 
-    private Long publisherId;
+    @OneToOne
+    private Book book;
 
 
-    @OneToOne(mappedBy = "book")
-    @ToString.Exclude
-    private BookReviewInfo bookReviewInfo;
+
 }
-
